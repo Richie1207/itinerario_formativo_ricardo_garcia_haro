@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Itinerario formativo-profesional — Ricardo García Haro</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,450;9..144,560;9..144,650&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy: #10213D;
+    --navy-2: #1B3766;
+    --navy-soft: #2C4A80;
+    --paper: #F5F5F1;
+    --panel: #FFFFFF;
+    --ink: #191D27;
+    --slate: #545C6E;
+    --slate-soft: #8A91A3;
+    --gold: #A9802E;
+    --gold-soft: #D9BE84;
+    --sage: #3E6B4F;
+    --sage-bg: #EAF1EC;
+    --brick: #7C3B32;
+    --brick-bg: #F5EAE7;
+    --line: #DCDCD3;
+    --radius: 3px;
+    --wrap: 1180px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+    font-size:16px;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.serif{ font-family:'Fraunces', Georgia, serif; }
+  .wrap{ max-width:var(--wrap); margin:0 auto; padding:0 40px; }
+  a{ color:inherit; }
+  img{max-width:100%; display:block;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    background:
+      linear-gradient(180deg, rgba(16,33,61,0.0) 0%, rgba(16,33,61,0.0) 100%),
+      var(--navy);
+    color:#F3F4F1;
+    position:relative;
+    overflow:hidden;
+    padding:76px 0 64px;
+  }
+  .hero::before{
+    content:"";
+    position:absolute; inset:0;
+    background-image:
+      repeating-linear-gradient(0deg, rgba(255,255,255,0.05) 0 1px, transparent 1px 64px),
+      repeating-linear-gradient(90deg, rgba(255,255,255,0.05) 0 1px, transparent 1px 64px);
+    mask-image: radial-gradient(ellipse 80% 70% at 70% 30%, black 10%, transparent 75%);
+    -webkit-mask-image: radial-gradient(ellipse 80% 70% at 70% 30%, black 10%, transparent 75%);
+    pointer-events:none;
+  }
+  .hero-inner{ position:relative; z-index:1; }
+  .kicker{
+    display:flex; align-items:center; gap:12px;
+    font-size:12.5px; letter-spacing:.08em; color:var(--gold-soft);
+    margin-bottom:26px; font-weight:600;
+  }
+  .kicker .rule{ width:34px; height:1px; background:var(--gold-soft); display:inline-block; }
+  h1.hero-title{
+    font-weight:560; font-size:clamp(34px,4.4vw,54px);
+    line-height:1.08; letter-spacing:-0.01em; margin:0 0 18px; max-width:820px;
+  }
+  .hero-sub{
+    font-family:'Fraunces', serif; font-weight:300; font-style:italic;
+    font-size:clamp(18px,1.9vw,22px); color:#CBD3E6; max-width:640px; margin:0 0 36px;
+  }
+  .hero-meta{
+    display:flex; flex-wrap:wrap; gap:10px 12px; margin-bottom:40px;
+  }
+  .chip{
+    border:1px solid rgba(255,255,255,.22); border-radius:999px;
+    padding:7px 16px; font-size:13.5px; color:#E7E9F3;
+  }
+  .hero-grid{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:0;
+    border-top:1px solid rgba(255,255,255,.18);
+    margin-top:20px;
+  }
+  .hero-stat{
+    padding:22px 22px 0; border-right:1px solid rgba(255,255,255,.14);
+  }
+  .hero-stat:last-child{ border-right:none; }
+  .hero-stat .num{ font-family:'Fraunces',serif; font-weight:500; font-size:clamp(26px,2.6vw,36px); color:#fff; }
+  .hero-stat .lbl{ font-size:12.5px; color:#AEB6CC; margin-top:6px; max-width:200px; }
+
+  /* ---------- SECTION SCAFFOLD ---------- */
+  section{ padding:74px 0; border-bottom:1px solid var(--line); }
+  section:last-of-type{ border-bottom:none; }
+  .sec-head{
+    display:grid; grid-template-columns:96px 1fr; gap:26px; align-items:start; margin-bottom:40px;
+  }
+  .sec-num{
+    font-family:'Fraunces',serif; font-weight:450; font-size:44px; color:var(--gold);
+    line-height:1;
+  }
+  .sec-num span{ display:block; font-family:'Inter',sans-serif; font-weight:600; font-size:11px; letter-spacing:.09em; color:var(--slate-soft); margin-top:8px; }
+  h2.sec-title{ font-weight:500; font-size:clamp(24px,2.6vw,32px); margin:0 0 10px; color:var(--navy); }
+  .sec-desc{ color:var(--slate); max-width:680px; font-size:15.5px; }
+
+  .cols-2{ display:grid; grid-template-columns:1fr 1fr; gap:28px; }
+  .cols-3{ display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+
+  .card{
+    background:var(--panel); border:1px solid var(--line); border-radius:var(--radius);
+    padding:26px 28px;
+  }
+  .card h3{ font-size:16px; font-weight:600; margin:0 0 8px; color:var(--navy); font-family:'Inter',sans-serif; }
+  .card p{ margin:0; color:var(--slate); font-size:14.5px; }
+  .tag{
+    display:inline-block; font-size:11px; font-weight:600; letter-spacing:.06em;
+    padding:4px 10px; border-radius:999px; margin-bottom:14px;
+  }
+  .tag.gold{ background:#F6EEDD; color:#7A5B18; }
+  .tag.navy{ background:#E7EBF3; color:var(--navy-2); }
+
+  /* ---------- 01 OBJETIVO ---------- */
+  .objetivo-lede{
+    font-family:'Fraunces',serif; font-weight:450; font-size:clamp(20px,2.2vw,26px);
+    line-height:1.4; color:var(--navy); max-width:820px; margin:0 0 22px;
+  }
+  .objetivo-lede em{ font-style:italic; color:var(--gold); }
+
+  /* ---------- 02 MERCADO ---------- */
+  .market-grid{
+    display:grid; grid-template-columns: 1.1fr 1fr 1fr; gap:24px; margin-top:8px;
+  }
+  .panel{ background:var(--panel); border:1px solid var(--line); border-radius:var(--radius); padding:26px; }
+  .panel-title{ font-size:12.5px; font-weight:600; letter-spacing:.05em; color:var(--slate); margin-bottom:18px; text-transform:uppercase; }
+
+  .donut-wrap{ display:flex; align-items:center; gap:22px; }
+  .donut-figure{ text-align:center; }
+  .donut-num{ font-family:'Fraunces',serif; font-weight:500; font-size:15px; fill:var(--navy); }
+  .donut-legend div{ font-size:13.5px; color:var(--slate); margin-bottom:6px; }
+  .donut-legend .big{ font-weight:600; color:var(--navy); }
+
+  .bar-row{ margin-bottom:16px; }
+  .bar-row:last-child{ margin-bottom:0; }
+  .bar-label{ display:flex; justify-content:space-between; font-size:13px; color:var(--slate); margin-bottom:6px; }
+  .bar-label b{ color:var(--navy); font-weight:600; }
+  .bar-track{ height:9px; background:#EEEFEA; border-radius:99px; overflow:hidden; }
+  .bar-fill{ height:100%; border-radius:99px; background:var(--navy-soft); }
+  .bar-fill.gold{ background:var(--gold); }
+  .bar-fill.sage{ background:var(--sage); }
+
+  .stack-bar{ display:flex; height:34px; border-radius:6px; overflow:hidden; margin-top:6px; }
+  .stack-a{ background:var(--navy-2); display:flex; align-items:center; justify-content:center; color:#fff; font-size:13px; font-weight:600; }
+  .stack-b{ background:#DCE3EF; display:flex; align-items:center; justify-content:center; color:var(--navy-2); font-size:13px; font-weight:600; }
+
+  .highlight-card{
+    grid-column:1 / -1; background:var(--navy); color:#F1F2EE; border-radius:var(--radius);
+    padding:30px 32px; display:grid; grid-template-columns:1.3fr 1fr 1fr; gap:26px; align-items:center; margin-top:24px;
+  }
+  .highlight-card .hc-title{ font-family:'Fraunces',serif; font-size:19px; font-weight:450; line-height:1.35; }
+  .highlight-card .hc-title strong{ color:var(--gold-soft); font-weight:500; }
+  .hc-stat .n{ font-family:'Fraunces',serif; font-size:30px; color:#fff; }
+  .hc-stat .l{ font-size:12.5px; color:#AEB6CC; margin-top:4px; }
+  .source-note{ font-size:12px; color:var(--slate-soft); margin-top:14px; }
+
+  /* ---------- 03 DAFO ---------- */
+  .dafo-grid{ display:grid; grid-template-columns:1fr 1fr; grid-template-rows:1fr 1fr; gap:2px; background:var(--line); border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; }
+  .dafo-cell{ background:var(--panel); padding:28px 30px; }
+  .dafo-cell.f{ border-left:4px solid var(--sage); }
+  .dafo-cell.d{ border-left:4px solid var(--brick); }
+  .dafo-cell.o{ border-left:4px solid var(--gold); }
+  .dafo-cell.a{ border-left:4px solid var(--navy-2); }
+  .dafo-h{ display:flex; align-items:baseline; gap:10px; margin-bottom:14px; }
+  .dafo-h .letter{ font-family:'Fraunces',serif; font-size:26px; font-weight:500; }
+  .dafo-cell.f .letter{ color:var(--sage); }
+  .dafo-cell.d .letter{ color:var(--brick); }
+  .dafo-cell.o .letter{ color:var(--gold); }
+  .dafo-cell.a .letter{ color:var(--navy-2); }
+  .dafo-h .name{ font-size:12.5px; font-weight:600; letter-spacing:.06em; text-transform:uppercase; color:var(--slate); }
+  .dafo-cell ul{ margin:0; padding-left:18px; }
+  .dafo-cell li{ font-size:14px; color:var(--ink); margin-bottom:9px; }
+  .dafo-cell li:last-child{ margin-bottom:0; }
+  .dafo-cell li b{ color:var(--navy); }
+
+  /* ---------- 04 VIAS ---------- */
+  .track{ position:relative; padding-top:6px; }
+  .track::before{
+    content:""; position:absolute; top:34px; left:26px; right:26px; height:1px; background:var(--line);
+  }
+  .track-items{ display:grid; grid-template-columns:repeat(3,1fr); gap:26px; position:relative; }
+  .track-node{ background:var(--panel); border:1px solid var(--line); border-radius:var(--radius); padding:0; }
+  .track-dot{
+    width:14px; height:14px; border-radius:50%; background:var(--gold); border:3px solid var(--paper);
+    margin:20px auto 0; box-shadow:0 0 0 1px var(--gold);
+    position:relative; z-index:1;
+  }
+  .track-body{ padding:18px 22px 24px; text-align:left; }
+  .track-body .step-k{ font-size:11px; letter-spacing:.06em; color:var(--gold); font-weight:700; text-transform:uppercase; }
+  .track-body h3{ margin:6px 0 8px; }
+  .track-body p{ font-size:13.8px; color:var(--slate); margin:0; }
+
+  /* ---------- 05 ALTERNATIVAS ---------- */
+  .alt-card{ border-top:3px solid var(--navy-2); }
+  .alt-card.uni{ border-top-color:var(--gold); }
+  .alt-card .alt-tag{ font-size:11px; letter-spacing:.06em; text-transform:uppercase; font-weight:700; color:var(--slate-soft); margin-bottom:10px; }
+  .alt-card h3{ font-size:17px; }
+  .alt-card ul{ margin:12px 0 0; padding-left:18px; }
+  .alt-card li{ font-size:13.8px; color:var(--slate); margin-bottom:6px; }
+
+  /* ---------- 06 PLAN DE ACCION (timeline) ---------- */
+  .timeline{ display:grid; grid-template-columns:repeat(3,1fr); gap:0; position:relative; }
+  .timeline::before{ content:""; position:absolute; top:14px; left:0; right:0; height:2px; background:linear-gradient(90deg,var(--sage),var(--gold),var(--navy-2)); }
+  .tl-item{ padding-top:34px; position:relative; }
+  .tl-item + .tl-item{ border-left:1px solid var(--line); padding-left:28px; margin-left:4px; }
+  .tl-dot{ position:absolute; top:8px; left:0; width:13px; height:13px; border-radius:50%; background:var(--panel); border:2px solid var(--navy-2); }
+  .tl-item:nth-child(1) .tl-dot{ border-color:var(--sage); left:-1px;}
+  .tl-item:nth-child(2) .tl-dot{ border-color:var(--gold); left:-1px;}
+  .tl-item:nth-child(3) .tl-dot{ border-color:var(--navy-2); left:-1px;}
+  .tl-period{ font-size:11.5px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--slate-soft); margin-bottom:6px; }
+  .tl-year{ font-family:'Fraunces',serif; font-size:22px; color:var(--navy); margin-bottom:14px; }
+  .tl-item ul{ margin:0; padding-left:18px; }
+  .tl-item li{ font-size:14px; color:var(--ink); margin-bottom:10px; }
+  .tl-item li b{ color:var(--navy); }
+
+  /* ---------- 07 SEGUIMIENTO ---------- */
+  .kpi-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:20px; margin-top:28px; }
+  .kpi-card{ background:var(--panel); border:1px solid var(--line); border-radius:var(--radius); padding:20px 20px; }
+  .kpi-card .kpi-ico{ width:30px; height:30px; margin-bottom:14px; }
+  .kpi-card h3{ font-size:14.5px; margin-bottom:6px; }
+  .kpi-card p{ font-size:13px; color:var(--slate); margin:0; }
+
+  .closing{
+    background:var(--navy); color:#EEEFE9; border-radius:var(--radius); padding:34px 38px; margin-top:32px;
+  }
+  .closing p{ font-family:'Fraunces',serif; font-size:18px; font-weight:300; font-style:italic; line-height:1.55; margin:0; max-width:900px; color:#DCE1EF; }
+
+  footer{
+    background:var(--navy); color:#9BA4BC; padding:34px 0 40px; font-size:12.5px;
+  }
+  footer .wrap{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:14px; }
+  footer strong{ color:#DCE1EF; }
+
+  @media (max-width:980px){
+    .wrap{ padding:0 22px; }
+    .hero-grid{ grid-template-columns:repeat(2,1fr); }
+    .hero-stat{ border-right:none; border-bottom:1px solid rgba(255,255,255,.14); padding-bottom:16px; margin-bottom:6px; }
+    .cols-2, .cols-3, .market-grid, .dafo-grid, .track-items, .timeline, .kpi-grid{ grid-template-columns:1fr !important; }
+    .highlight-card{ grid-template-columns:1fr; }
+    .sec-head{ grid-template-columns:1fr; }
+    .tl-item + .tl-item{ border-left:none; padding-left:0; margin-left:0; border-top:1px solid var(--line); padding-top:24px; margin-top:24px; }
+    .timeline::before{ display:none; }
+    footer .wrap{ flex-direction:column; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap hero-inner">
+    <div class="kicker"><span class="rule"></span>ITINERARIO FORMATIVO-PROFESIONAL</div>
+    <h1 class="hero-title">De la analítica financiera corporativa al aula: hacia la habilitación docente y la universidad</h1>
+    <p class="hero-sub">Ricardo Antonio García Haro — Docencia en Finanzas, Administración y Gestión Comercial</p>
+    <div class="hero-meta">
+      <span class="chip">Ingeniero Industrial · MBA Executive</span>
+      <span class="chip">MSc. Finanzas de Empresa, UCM — ene. 2027</span>
+      <span class="chip">Doctorado en Finanzas Cuantitativas — desde 2027</span>
+      <span class="chip">SSC_C_017_5B · Habilitación docente FP</span>
+    </div>
+    <div class="hero-grid">
+      <div class="hero-stat"><div class="num">10+</div><div class="lbl">años de experiencia en FP&amp;A, control de gestión y coordinación de operaciones</div></div>
+      <div class="hero-stat"><div class="num">10,8%</div><div class="lbl">tasa de paro en España, EPA T1 2026 — contexto del mercado al que se forma al alumnado</div></div>
+      <div class="hero-stat"><div class="num">211.578</div><div class="lbl">contratos anuales a titulados de Administración y Gestión — familia FP con mayor absorción laboral</div></div>
+      <div class="hero-stat"><div class="num">2027</div><div class="lbl">inicio del doctorado en Finanzas Cuantitativas, puerta de acceso a la docencia universitaria</div></div>
+    </div>
+  </div>
+</header>
+
+<!-- 01 OBJETIVO PROFESIONAL -->
+<section id="objetivo">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">01<span>Objetivo</span></div>
+      <div>
+        <h2 class="sec-title">Marcar un objetivo profesional</h2>
+        <p class="sec-desc">Trasladar una carrera de más de una década en finanzas corporativas y control de gestión hacia la docencia especializada en Finanzas, Administración y Gestión Comercial, con un horizonte claro: FP hoy, universidad mañana.</p>
+      </div>
+    </div>
+
+    <p class="objetivo-lede">Formar a la próxima generación de perfiles financieros con el mismo rigor cuantitativo con el que hoy se <em>audita un balance</em> o se <em>modela un flujo de caja</em>: sustituyendo la pedagogía puramente teórica por metodologías de aplicación práctica, conectando el aula con la realidad empresarial mediante modelización financiera, dashboards y resolución interactiva de casos.</p>
+
+    <div class="cols-2">
+      <div class="card">
+        <span class="tag navy">Objetivo inmediato</span>
+        <h3>Habilitación docente en Formación Profesional</h3>
+        <p>Obtener el Certificado de Profesionalidad SSC_C_017_5B para impartir en Grados A, B y C, con foco en la familia de Administración y Gestión, la de mayor demanda de contratación entre los titulados de FP.</p>
+      </div>
+      <div class="card">
+        <span class="tag gold">Objetivo a largo plazo</span>
+        <h3>Acceso a la docencia e investigación universitaria</h3>
+        <p>Iniciar en 2027 el Doctorado en Finanzas Cuantitativas, apoyado en el MSc. en Finanzas de Empresa (UCM) y en la experiencia de modelización DCF y Montecarlo, como vía formal hacia la cátedra universitaria.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 CONOCER LA PROFESION -->
+<section id="mercado">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">02<span>Entorno</span></div>
+      <div>
+        <h2 class="sec-title">Conocer la profesión: el mercado que forma al aula</h2>
+        <p class="sec-desc">Lectura del Informe Trimestral de Análisis del Mercado de Trabajo (MITES, 1er trimestre 2026) y del Informe del Mercado Laboral y la FP 2025, para situar la docencia dentro de la realidad económica que describirá a sus alumnos.</p>
+      </div>
+    </div>
+
+    <div class="market-grid">
+      <div class="panel">
+        <div class="panel-title">Tasa de paro — España, T1 2026</div>
+        <div class="donut-wrap">
+          <svg width="132" height="132" viewBox="0 0 132 132">
+            <circle cx="66" cy="66" r="54" fill="none" stroke="#EEEFEA" stroke-width="14"/>
+            <circle cx="66" cy="66" r="54" fill="none" stroke="#A9802E" stroke-width="14"
+              stroke-dasharray="339.3" stroke-dashoffset="302.5" stroke-linecap="round"
+              transform="rotate(-90 66 66)"/>
+            <text x="66" y="61" text-anchor="middle" class="donut-num">10,8%</text>
+            <text x="66" y="78" text-anchor="middle" font-size="10.5" fill="#8A91A3" font-family="Inter">activos 16+</text>
+          </svg>
+          <div class="donut-legend">
+            <div><span class="big">-0,5 pp</span> interanual</div>
+            <div><span class="big">+0,9 pp</span> trimestral</div>
+            <div>Previsión Banco de España 2026: <b>9,9%</b></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-title">Indicadores macro interanuales</div>
+        <div class="bar-row">
+          <div class="bar-label"><span>PIB (T1 2026)</span><b>+2,7%</b></div>
+          <div class="bar-track"><div class="bar-fill" style="width:60%"></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label"><span>Empleo, ocupados EPA</span><b>+2,4%</b></div>
+          <div class="bar-track"><div class="bar-fill sage" style="width:53%"></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label"><span>Coste laboral por trabajador</span><b>+3,8%</b></div>
+          <div class="bar-track"><div class="bar-fill gold" style="width:84%"></div></div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-title">Contratación registrada — marzo 2026</div>
+        <p style="font-size:13.5px;color:var(--slate);margin:0 0 6px;">Del total de contratos registrados por el SEPE:</p>
+        <div class="stack-bar">
+          <div class="stack-a" style="width:44%">44,0% indefinidos</div>
+          <div class="stack-b" style="width:56%">56,0% temporales</div>
+        </div>
+        <p style="font-size:12.5px;color:var(--slate-soft);margin-top:12px;">La contratación creció un 17,2% intermensual y un 12,4% interanual.</p>
+      </div>
+
+      <div class="highlight-card">
+        <div class="hc-title">La familia <strong>Administración y Gestión</strong> lidera la absorción laboral de la Formación Profesional en España — el área donde se concentra esta especialización docente.</div>
+        <div class="hc-stat"><div class="n">211.578</div><div class="l">contratos anuales a titulados de esta familia FP</div></div>
+        <div class="hc-stat"><div class="n">+7,8%</div><div class="l">crecimiento de matrícula en Administración y Gestión</div></div>
+      </div>
+      <div class="source-note" style="grid-column:1/-1;">Fuentes: Informe Trimestral de Análisis del Mercado de Trabajo, MITES-SEPE, 1er trimestre 2026 (mites.gob.es/es/sec_trabajo/analisis-mercado-trabajo) · Informe Anual del Mercado Laboral y la FP 2025.</div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 DAFO -->
+<section id="dafo">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">03<span>Diagnóstico</span></div>
+      <div>
+        <h2 class="sec-title">Autodiagnóstico DAFO del perfil docente</h2>
+        <p class="sec-desc">Cruce entre la trayectoria profesional recogida en el CV y el contexto de empleabilidad docente descrito en el Tema 1, incorporando el doctorado como nueva variable del análisis.</p>
+      </div>
+    </div>
+
+    <div class="dafo-grid">
+      <div class="dafo-cell f">
+        <div class="dafo-h"><span class="letter">F</span><span class="name">Fortalezas</span></div>
+        <ul>
+          <li>Base académica interdisciplinar: <b>Ingeniería Industrial, MBA Executive y MSc. en Finanzas de Empresa (UCM)</b>.</li>
+          <li>Más de 10 años de experiencia real en <b>FP&amp;A, control presupuestario y reporting a dirección</b>, en organismo público nacional y multinacionales.</li>
+          <li>Dominio avanzado de herramientas analíticas clave: <b>Python, SQL, Power BI, Excel avanzado (DCF, Montecarlo)</b>.</li>
+          <li>Experiencia previa en docencia de Logística y Operaciones.</li>
+        </ul>
+      </div>
+      <div class="dafo-cell d">
+        <div class="dafo-h"><span class="letter">D</span><span class="name">Debilidades</span></div>
+        <ul>
+          <li>Habilitación pedagógica formal aún pendiente de formalizar: <b>Certificado SSC_C_017_5B</b>.</li>
+          <li>Nivel de inglés en mejora activa (B1/B2), relevante para bibliografía y estándares internacionales (CFA).</li>
+          <li>Reciente instalación en España: red profesional docente todavía por construir.</li>
+        </ul>
+      </div>
+      <div class="dafo-cell o">
+        <div class="dafo-h"><span class="letter">O</span><span class="name">Oportunidades</span></div>
+        <ul>
+          <li>Administración y Gestión es la familia FP con <b>mayor contratación estatal</b> (211.578 contratos/año) y matrícula creciendo un <b>7,8%</b>.</li>
+          <li>Apuesta institucional por los <b>Centros de Excelencia de FP</b> y la transformación digital del aula.</li>
+          <li>El doctorado en Finanzas Cuantitativas abre formalmente la vía hacia la <b>docencia e investigación universitaria</b>.</li>
+        </ul>
+      </div>
+      <div class="dafo-cell a">
+        <div class="dafo-h"><span class="letter">A</span><span class="name">Amenazas</span></div>
+        <ul>
+          <li>Obsolescencia tecnológica acelerada que exige recualificación docente permanente.</li>
+          <li>Acceso a la docencia FP y universitaria sujeto a procesos regulados y competitivos.</li>
+          <li>Tasa de paro general aún en <b>10,8%</b>, pese a la mejora interanual del mercado laboral.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 VIAS PARA ADQUIRIR COMPETENCIAS -->
+<section id="vias">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">04<span>Cualificación</span></div>
+      <div>
+        <h2 class="sec-title">Vías para adquirir competencias</h2>
+        <p class="sec-desc">Tres acreditaciones complementarias que combinan habilitación pedagógica, estándar técnico internacional y vía académica hacia la universidad.</p>
+      </div>
+    </div>
+
+    <div class="track">
+      <div class="track-items">
+        <div class="track-node">
+          <div class="track-dot"></div>
+          <div class="track-body">
+            <div class="step-k">Cualificación pedagógica</div>
+            <h3>SSC_C_017_5B</h3>
+            <p>Habilitación para la docencia en Grados A, B y C del Sistema de Formación Profesional. Requisito formal para acceder al aula de FP.</p>
+          </div>
+        </div>
+        <div class="track-node">
+          <div class="track-dot"></div>
+          <div class="track-body">
+            <div class="step-k">Acreditación técnica</div>
+            <h3>CFA Level I</h3>
+            <p>Estándar internacional en finanzas corporativas y valoración de activos: refuerza el rigor técnico que se traslada al aula y a la investigación.</p>
+          </div>
+        </div>
+        <div class="track-node">
+          <div class="track-dot"></div>
+          <div class="track-body">
+            <div class="step-k">Aprendizaje permanente</div>
+            <h3>Doctorado en Finanzas Cuantitativas</h3>
+            <p>Inicio en 2027, tras el MSc. de la UCM. Vía de acceso formal a la docencia e investigación universitaria en finanzas cuantitativas.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 ALTERNATIVAS DE FORMACION Y EMPLEO -->
+<section id="alternativas">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">05<span>Inserción</span></div>
+      <div>
+        <h2 class="sec-title">Alternativas de formación y empleo</h2>
+        <p class="sec-desc">Tres puertas de entrada que conviven en paralelo, con la universidad como horizonte una vez completado el doctorado.</p>
+      </div>
+    </div>
+
+    <div class="cols-3">
+      <div class="card alt-card">
+        <div class="alt-tag">Corto-medio plazo</div>
+        <h3>Docencia en Formación Profesional</h3>
+        <ul>
+          <li>Red de Centros de Excelencia de FP.</li>
+          <li>Especialización en Administración, Gestión y Finanzas.</li>
+          <li>Aprovechamiento de la inversión pública en digitalización del aula.</li>
+        </ul>
+      </div>
+      <div class="card alt-card">
+        <div class="alt-tag">En paralelo</div>
+        <h3>Formación corporativa</h3>
+        <ul>
+          <li>Diseño de acciones formativas in-company en Administración y Gestión.</li>
+          <li>Programas de recualificación (upskilling) para trabajadores en activo.</li>
+          <li>Aplicación directa de la experiencia FP&amp;A en Five Guys, Atento y Fiscalía de la Nación.</li>
+        </ul>
+      </div>
+      <div class="card alt-card uni">
+        <div class="alt-tag">Medio-largo plazo</div>
+        <h3>Docencia e investigación universitaria</h3>
+        <ul>
+          <li>Acceso tras la finalización del Doctorado en Finanzas Cuantitativas.</li>
+          <li>Profesor asociado o investigador en finanzas cuantitativas y modelización financiera.</li>
+          <li>Continuidad del proyecto de valoración cuantitativa iniciado en el Stock Pitch Competition (UCM).</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 06 PLAN DE ACCION -->
+<section id="plan">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">06<span>Ejecución</span></div>
+      <div>
+        <h2 class="sec-title">Plan de acción</h2>
+        <p class="sec-desc">Tres horizontes temporales que integran la habilitación docente en FP con el inicio del doctorado y la proyección universitaria.</p>
+      </div>
+    </div>
+
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-period">Corto plazo</div>
+        <div class="tl-year">2026</div>
+        <ul>
+          <li>Finalizar el <b>MSc. en Finanzas de Empresa</b> (UCM, enero 2027): valoración, presupuestación y modelos DCF.</li>
+          <li>Obtener la habilitación <b>SSC_C_017_5B</b> para la docencia en FP.</li>
+        </ul>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-period">Medio plazo</div>
+        <div class="tl-year">2027</div>
+        <ul>
+          <li>Iniciar el <b>Doctorado en Finanzas Cuantitativas</b>.</li>
+          <li>Integrar desarrollos propios en Python, Power BI y simulación de Montecarlo en las unidades didácticas.</li>
+          <li>Consolidar la certificación <b>CFA Level I</b>.</li>
+        </ul>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-period">Largo plazo</div>
+        <div class="tl-year">2028 en adelante</div>
+        <ul>
+          <li>Finalizar el doctorado y habilitar el acceso a <b>docencia universitaria</b>.</li>
+          <li>Participar en proyectos de investigación aplicada e I+D+i en finanzas cuantitativas.</li>
+          <li>Compatibilizar docencia FP y universitaria bajo un mismo eje: la aplicación práctica de la analítica financiera.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 07 SEGUIMIENTO Y REAJUSTE -->
+<section id="seguimiento">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">07<span>Revisión</span></div>
+      <div>
+        <h2 class="sec-title">Seguimiento y reajuste del itinerario</h2>
+        <p class="sec-desc">La obtención de un puesto docente es un paso dentro de un proceso continuo, no un punto final. El itinerario se revisa frente a cuatro indicadores.</p>
+      </div>
+    </div>
+
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <svg class="kpi-ico" viewBox="0 0 24 24" fill="none" stroke="#A9802E" stroke-width="1.6"><path d="M4 19h16M7 15l3-4 3 3 5-7"/></svg>
+        <h3>Empleabilidad del alumnado</h3>
+        <p>Evaluación periódica de la inserción real de los alumnos en Administración y Gestión.</p>
+      </div>
+      <div class="kpi-card">
+        <svg class="kpi-ico" viewBox="0 0 24 24" fill="none" stroke="#A9802E" stroke-width="1.6"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/></svg>
+        <h3>Indicadores de mercado</h3>
+        <p>Lectura trimestral del Informe MITES-SEPE: paro, contratación y costes laborales.</p>
+      </div>
+      <div class="kpi-card">
+        <svg class="kpi-ico" viewBox="0 0 24 24" fill="none" stroke="#A9802E" stroke-width="1.6"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 9h6v6H9z"/></svg>
+        <h3>Herramientas del aula</h3>
+        <p>Actualización continua de Power BI, Python y modelos de simulación aplicados a la docencia.</p>
+      </div>
+      <div class="kpi-card">
+        <svg class="kpi-ico" viewBox="0 0 24 24" fill="none" stroke="#A9802E" stroke-width="1.6"><path d="M4 12h16M14 6l6 6-6 6"/></svg>
+        <h3>Avance del doctorado</h3>
+        <p>Seguimiento del progreso investigador como vía de acceso a la docencia universitaria.</p>
+      </div>
+    </div>
+
+    <div class="closing">
+      <p>Auditar el itinerario con la misma disciplina con la que se audita un balance: revisando cada trimestre el impacto práctico del temario y ajustando las competencias adquiridas en el aula a las exigencias reales del ecosistema financiero corporativo y académico.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div><strong>Ricardo Antonio García Haro</strong> — Itinerario formativo-profesional, docencia en Finanzas y Administración Corporativa.</div>
+    <div>Fuentes: Tema 1 (Perfil profesional y empleabilidad) · Informe Trimestral del Mercado de Trabajo, MITES-SEPE, T1 2026 · Informe del Mercado Laboral y la FP 2025 (ago. 2026) · CV del autor.</div>
+  </div>
+</footer>
+
+</body>
+</html>
